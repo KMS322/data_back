@@ -64,7 +64,7 @@ router.post("/arrs", async (req, res, next) => {
       __dirname,
       `../public/datas/data_${currentDay}.xlsx`
     );
-
+    console.log("filePath : ", filePath);
     const dir = path.dirname(filePath);
     if (!fs.existsSync(dir)) {
       console.log("fs go");
@@ -72,8 +72,8 @@ router.post("/arrs", async (req, res, next) => {
     }
 
     // 엑셀 파일 저장
-    // XLSX.writeFile(workbook, filePath);
-    await workbook.XLSX.writeFile(filePath);
+    XLSX.writeFile(workbook, filePath);
+    console.log("bb");
     res
       .status(200)
       .json({ message: "Excel file created successfully", filePath });
