@@ -19,7 +19,9 @@ const Main = () => {
       type: LOAD_ARRS_REQUEST,
     });
 
-    const filePath = `${API_URL}/datas/data_${dayjs().format("MMDD")}.xlsx`; // 파일 경로
+    const filePath = `${API_URL}/public/datas/data_${dayjs().format(
+      "MMDD"
+    )}.xlsx`; // 파일 경로
     fetch(filePath)
       .then((response) => {
         if (!response.ok) {
