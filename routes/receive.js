@@ -72,7 +72,8 @@ router.post("/arrs", async (req, res, next) => {
     }
 
     // 엑셀 파일 저장
-    XLSX.writeFile(workbook, filePath);
+    // XLSX.writeFile(workbook, filePath);
+    await workbook.XLSX.writeFile(filePath);
     res
       .status(200)
       .json({ message: "Excel file created successfully", filePath });
