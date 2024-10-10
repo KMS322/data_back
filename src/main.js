@@ -9,11 +9,11 @@ const Main = () => {
   const dispatch = useDispatch();
   const { arrs } = useSelector((state) => state.arr);
   // console.log("arrs : ", arrs);
-  useEffect(() => {
-    dispatch({
-      type: LOAD_ARRS_REQUEST,
-    });
-  }, [arrs]);
+  // useEffect(() => {
+  //   dispatch({
+  //     type: LOAD_ARRS_REQUEST,
+  //   });
+  // }, [arrs]);
   const loadExcel = () => {
     dispatch({
       type: LOAD_ARRS_REQUEST,
