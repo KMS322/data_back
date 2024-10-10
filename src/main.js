@@ -47,9 +47,11 @@ const Main = () => {
   };
   const showDatas = () => {
     dispatch({
-      type: DOWN_ARRS_REQUEST,
+      type: LOAD_ARRS_REQUEST,
     });
-    setDatas(arrs);
+    if (arrs.length > 0) {
+      setDatas(arrs);
+    }
   };
   return (
     <div className="main_container">
