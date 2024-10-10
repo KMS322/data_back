@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { LOAD_ARRS_REQUEST } from "./reducers/arr";
 import dayjs from "dayjs";
-import { API_URL } from "./constants";
+import { WEB_URL } from "./constants";
 
 const Main = () => {
   const [datas, setDatas] = useState();
@@ -19,7 +19,7 @@ const Main = () => {
       type: LOAD_ARRS_REQUEST,
     });
 
-    const filePath = `${API_URL}/public/datas/data_${dayjs().format(
+    const filePath = `${WEB_URL}/public/datas/data_${dayjs().format(
       "MMDD"
     )}.xlsx`; // 파일 경로
     fetch(filePath)
