@@ -19,27 +19,35 @@ const Main = () => {
       type: LOAD_ARRS_REQUEST,
     });
 
+    // const filePath = `/public/datas/data_${dayjs().format("MMDD")}.xlsx`; // 파일 경로
+    // fetch(filePath)
+    //   .then((response) => {
+    //     if (!response.ok) {
+    //       throw new Error("Network response was not ok");
+    //     }
+    //     return response.blob(); // Blob 형태로 변환
+    //   })
+    //   .then((blob) => {
+    //     const url = window.URL.createObjectURL(blob); // Blob URL 생성
+    //     const a = document.createElement("a");
+    //     a.href = url;
+    //     a.download = `data_${dayjs().format("MMDD")}.xlsx`; // 다운로드할 파일 이름
+    //     document.body.appendChild(a);
+    //     a.click(); // 클릭 이벤트 발생
+    //     a.remove(); // a 태그 제거
+    //     window.URL.revokeObjectURL(url); // Blob URL 해제
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error downloading the file:", error);
+    //   });
+
     const filePath = `/public/datas/data_${dayjs().format("MMDD")}.xlsx`; // 파일 경로
-    fetch(filePath)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.blob(); // Blob 형태로 변환
-      })
-      .then((blob) => {
-        const url = window.URL.createObjectURL(blob); // Blob URL 생성
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `data_${dayjs().format("MMDD")}.xlsx`; // 다운로드할 파일 이름
-        document.body.appendChild(a);
-        a.click(); // 클릭 이벤트 발생
-        a.remove(); // a 태그 제거
-        window.URL.revokeObjectURL(url); // Blob URL 해제
-      })
-      .catch((error) => {
-        console.error("Error downloading the file:", error);
-      });
+    const a = document.createElement("a");
+    a.href = filePath; // 파일 경로
+    a.download = `data_${dayjs().format("MMDD")}.xlsx`; // 다운로드할 파일 이름
+    document.body.appendChild(a);
+    a.click(); // 클릭 이벤트 발생
+    a.remove(); // a 태그 제거
   };
   const showDatas = () => {
     dispatch({
