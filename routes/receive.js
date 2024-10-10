@@ -23,9 +23,9 @@ let dataArrs = [];
 router.post("/arrs", async (req, res, next) => {
   try {
     console.log("AA");
-    const result = convertToObjects(req.body);
-    dataArrs.push(...result);
-    console.log("dataArrs.length : ", dataArrs);
+    console.log("req.bdoy : ", req.body);
+    arrs = req.body;
+    console.log("arrs : ", arrs.length);
 
     const header = [
       "no",
