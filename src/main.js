@@ -1,29 +1,26 @@
 import "./css/main.css";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { LOAD_ARRS_REQUEST, DOWN_ARRS_REQUEST } from "./reducers/arr";
+import { LOAD_ARRS_REQUEST } from "./reducers/arr";
 import dayjs from "dayjs";
 
 const Main = () => {
   const [datas, setDatas] = useState();
   const dispatch = useDispatch();
   const { arrs } = useSelector((state) => state.arr);
-  // console.log("arrs : ", arrs);
-  // useEffect(() => {
-  //   dispatch({
-  //     type: LOAD_ARRS_REQUEST,
-  //   });
-  // }, [arrs]);
+  useEffect(() => {
+    dispatch({
+      type: LOAD_ARRS_REQUEST,
+    });
+  }, [datas]);
   const loadExcel = () => {
     dispatch({
       type: LOAD_ARRS_REQUEST,
     });
-    // console.log("arrs : ", arrs);
 
     const filePath = `${process.env.PUBLIC_URL}/datas/data_${dayjs().format(
       "MMDD"
     )}.xlsx`; // 파일 경로
-    console.log("process.env.PUBLIC_URL : ", process.env.PUBLIC_URL);
     fetch(filePath)
       .then((response) => {
         if (!response.ok) {
@@ -35,7 +32,7 @@ const Main = () => {
         const url = window.URL.createObjectURL(blob); // Blob URL 생성
         const a = document.createElement("a");
         a.href = url;
-        a.download = `data_${dayjs().format("MMDDHHmm")}.xlsx`; // 다운로드할 파일 이름
+        a.download = `data_${dayjs().format("MMDD")}.xlsx`; // 다운로드할 파일 이름
         document.body.appendChild(a);
         a.click(); // 클릭 이벤트 발생
         a.remove(); // a 태그 제거
@@ -49,9 +46,7 @@ const Main = () => {
     dispatch({
       type: LOAD_ARRS_REQUEST,
     });
-    if (arrs.length > 0) {
-      setDatas(arrs);
-    }
+    setDatas(arrs);
   };
   return (
     <div className="main_container">

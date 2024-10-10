@@ -10,7 +10,7 @@ app.use(
       "http://localhost",
       "http://192.168.0.5",
       "fe80::4009:75ff:fe3c:200",
-      "http://192.168.192.165",
+      "http://192.168.219.103",
       "http://211.188.52.135",
     ],
     credentials: true,
