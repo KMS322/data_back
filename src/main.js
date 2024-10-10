@@ -41,7 +41,9 @@ const Main = () => {
     //     console.error("Error downloading the file:", error);
     //   });
 
-    const filePath = `/public/datas/data_${dayjs().format("MMDD")}.xlsx`; // 파일 경로
+    const filePath = `${WEB_URL}/public/datas/data_${dayjs().format(
+      "MMDD"
+    )}.xlsx`; // 파일 경로
     const a = document.createElement("a");
     a.href = filePath; // 파일 경로
     a.download = `data_${dayjs().format("MMDD")}.xlsx`; // 다운로드할 파일 이름
