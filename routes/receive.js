@@ -65,6 +65,11 @@ router.post("/arrs", async (req, res, next) => {
       `../public/datas/data_${currentDay}.xlsx`
     );
 
+    const dir = path.dirname(filePath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+
     // 엑셀 파일 저장
     XLSX.writeFile(workbook, filePath);
     res
