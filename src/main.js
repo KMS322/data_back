@@ -16,7 +16,7 @@ const Main = () => {
   }, [arrs]);
   const loadExcel = () => {
     dispatch({
-      type: DOWN_ARRS_REQUEST,
+      type: LOAD_ARRS_REQUEST,
     });
     // console.log("arrs : ", arrs);
 
