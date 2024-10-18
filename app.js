@@ -16,10 +16,12 @@ app.use(
     credentials: true,
   })
 );
-app.use("/receive", express.static(path.join(__dirname, "public", "datas")));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// 요청 크기 제한을 없애거나 매우 크게 설정
+app.use(express.json({ limit: "Infinity" }));
+app.use(express.urlencoded({ limit: "Infinity", extended: true }));
+
+app.use("/receive", express.static(path.join(__dirname, "public", "datas")));
 
 app.get("/", (req, res) => {
   res.send("server on");
