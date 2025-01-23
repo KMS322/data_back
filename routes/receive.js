@@ -55,7 +55,7 @@ router.post("/arrs", async (req, res, next) => {
     // 새로운 데이터 포맷
     const formattedData = dataArrs
       .map((item, index) => {
-        if (item.red > 500) {
+        if (Number(item.ir) > 500) {
           return {
             no: existingData.length + index + 1, // 기존 데이터 길이를 기준으로 번호 매기기
             time: item.time,
