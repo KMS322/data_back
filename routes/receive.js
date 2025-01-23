@@ -53,16 +53,20 @@ router.post("/arrs", async (req, res, next) => {
     }
 
     // 새로운 데이터 포맷
-    const formattedData = dataArrs.map((item, index) => ({
-      no: existingData.length + index + 1, // 기존 데이터 길이를 기준으로 번호 매기기
-      time: item.time,
-      red: item.red,
-      ir: item.ir,
-      // hr: item.HR,
-      // spo2: item.SpO2,
-      // temp: item.TEMP,
-      createdAt: dayjs().format("YYYYMMDD-HH:mm:ss"), // 현재 시간
-    }));
+    const formattedData = dataArrs
+      .map((item, index) => {
+        if (item.red > 500) {
+          return {
+            no: existingData.length + index + 1, // 기존 데이터 길이를 기준으로 번호 매기기
+            time: item.time,
+            red: item.red,
+            ir: item.ir,
+            createdAt: dayjs().format("YYYYMMDD-HH:mm:ss"), // 현재 시간
+          };
+        }
+        return null; // 조건에 맞지 않으면 null 반환
+      })
+      .filter((item) => item !== null);
 
     // 기존 데이터와 새로운 데이터를 병합
     const mergedData = existingData.concat(formattedData);
