@@ -29,9 +29,9 @@ router.post("/arrs", async (req, res, next) => {
       "time",
       "red",
       "ir",
-      "hr",
-      "spo2",
-      "temp",
+      // "hr",
+      // "spo2",
+      // "temp",
       "createdAt",
     ];
 
@@ -58,9 +58,9 @@ router.post("/arrs", async (req, res, next) => {
       time: item.time,
       red: item.red,
       ir: item.ir,
-      hr: item.HR,
-      spo2: item.SpO2,
-      temp: item.TEMP,
+      // hr: item.HR,
+      // spo2: item.SpO2,
+      // temp: item.TEMP,
       createdAt: dayjs().format("YYYYMMDD-HH:mm:ss"), // 현재 시간
     }));
 
